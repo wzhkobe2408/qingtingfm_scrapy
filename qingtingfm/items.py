@@ -9,6 +9,10 @@ import scrapy
 
 
 class QingtingfmItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    # Url of channel detail page
+    _id = scrapy.Field()
+    title = scrapy.Field()
+    play_count = scrapy.Field()
+    thumb_url = scrapy.Field()
+    stars = scrapy.Field()
+    latest_update = scrapy.Field()
