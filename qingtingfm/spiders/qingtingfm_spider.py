@@ -26,7 +26,7 @@ class QingtingfmSpider(scrapy.Spider):
     # parse function
     def parse(self, response):
         soup = BeautifulSoup(response.body, 'html.parser')
-        tags = soup.find_all('a', href=re.compile(r"\/channels\/.*"))
+        tags = soup.find_all('a', href=re.compile(r"\/channels\/\d*$"))
         for tag in tags:
             # print(tag.text.strip())
             url = self.baseUrl + tag.get('href')
@@ -62,7 +62,7 @@ class QingtingfmSpider(scrapy.Spider):
             self.logger.error(traceback.format_exc())
 
         # 2. Continue crawling
-        tags = soup.find_all('a', href=re.compile(r"\/channels\/.*"))
+        tags = soup.find_all('a', href=re.compile(r"\/channels\/\d*$"))
         for tag in tags:
             # print(tag.text.strip())
             url = self.baseUrl + tag.get('href')
